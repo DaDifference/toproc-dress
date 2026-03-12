@@ -551,6 +551,53 @@ input, textarea, select {
   font-size: 12px;
 }
 
+/* Product Card Image Link */
+.product-card-image-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Cart Button */
+.btn-cart {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 0;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-bg);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.btn-cart:hover {
+  background: transparent;
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.btn-cart-disabled {
+  background: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-cart-disabled:hover {
+  transform: none;
+}
+
 /* --- Brand Statement Section --- */
 .brand-statement {
   padding: 160px 0;

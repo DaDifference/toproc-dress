@@ -1,6 +1,10 @@
 /* =============================================
    TOPROC DRESS - Products Module
+   カラーミーショップ「どこでもカラーミー」連携
    ============================================= */
+
+const COLORME_SHOP_DOMAIN = 'toprocdress.shop-pro.jp';
+const COLORME_SHOP_ID = 'PA01264773';
 
 const ProductManager = {
   products: [],
@@ -37,6 +41,16 @@ const ProductManager = {
     return '¥' + price.toLocaleString('ja-JP') + ' (tax incl.)';
   },
 
+  getProductUrl(product) {
+    if (!product.shopProId) return null;
+    return `http://${COLORME_SHOP_DOMAIN}/?pid=${product.shopProId}`;
+  },
+
+  getCartUrl(product) {
+    if (!product.shopProId) return null;
+    return `https://${COLORME_SHOP_DOMAIN}/cart?pid=${product.shopProId}&num=1`;
+  },
+
   createCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card reveal';
@@ -47,15 +61,37 @@ const ProductManager = {
 
     const priceClass = product.price === null ? 'product-card-price no-price' : 'product-card-price';
 
+    const productUrl = this.getProductUrl(product);
+    const cartUrl = this.getCartUrl(product);
+
+    // Buy button: disabled for sold out or no-price items
+    let buyButton = '';
+    if (product.soldout) {
+      buyButton = '<button class="btn-cart btn-cart-disabled" disabled>SOLD OUT</button>';
+    } else if (product.price === null) {
+      buyButton = '<button class="btn-cart btn-cart-disabled" disabled>COMING SOON</button>';
+    } else if (cartUrl) {
+      buyButton = `<a href="${cartUrl}" class="btn-cart" target="_blank" rel="noopener">ADD TO CART</a>`;
+    }
+
+    // Detail link: wraps image area
+    const imageLink = productUrl
+      ? `<a href="${productUrl}" target="_blank" rel="noopener" class="product-card-image-link">`
+      : '<div class="product-card-image-link">';
+    const imageLinkClose = productUrl ? '</a>' : '</div>';
+
     card.innerHTML = `
-      <div class="product-card-image">
-        <img src="${product.image}" alt="${product.name} - ${product.color}" loading="lazy">
-        ${soldoutOverlay}
-      </div>
+      ${imageLink}
+        <div class="product-card-image">
+          <img src="${product.image}" alt="${product.name}${product.color ? ' - ' + product.color : ''}" loading="lazy">
+          ${soldoutOverlay}
+        </div>
+      ${imageLinkClose}
       <div class="product-card-info">
         <div class="product-card-name">${product.name}</div>
         ${product.color ? `<div class="product-card-color">${product.color}</div>` : ''}
         <div class="${priceClass}">${this.formatPrice(product.price)}</div>
+        ${buyButton}
       </div>
     `;
 
