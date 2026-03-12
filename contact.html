@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - TOPROC DRESS</title>
+  <meta name="description" content="TOPROC DRESS へのお問い合わせ。">
+  <meta property="og:title" content="Contact - TOPROC DRESS">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">TOPROC <span>DRESS</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="dealers.html">Dealers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="dealers.html">Dealers</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section class="contact-section section">
+      <div class="container">
+        <div class="page-header" style="padding-top: 0;">
+          <p class="section-label reveal">Get in Touch</p>
+          <h1 class="section-title reveal">Contact</h1>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h3>お問い合わせ</h3>
+            <p>
+              商品に関するご質問、卸売りのお問い合わせ、コラボレーションのご提案など、
+              お気軽にご連絡ください。
+            </p>
+            <p>
+              <a href="mailto:toprocdress.bro@gmail.com" class="contact-email">
+                toprocdress.bro@gmail.com
+              </a>
+            </p>
+            <div class="accent-line"></div>
+            <p style="font-size: 13px;">
+              通常2〜3営業日以内にご返信いたします。
+            </p>
+          </div>
+
+          <form id="contact-form" class="contact-form reveal">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="お名前">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="件名">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="メッセージをご記入ください"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="site-logo">TOPROC <span>DRESS</span></div>
+          <p>SUPPORT YOUR REBEL &mdash; Est. 2009</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="dealers.html">Dealers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Follow</h4>
+          <div class="footer-social-links">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="X (Twitter)">X</a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Newsletter</h4>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
+        <p class="footer-shipping">日本国内 ¥20,000以上で送料無料</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

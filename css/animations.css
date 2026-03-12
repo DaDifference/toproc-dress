@@ -1,0 +1,260 @@
+/* =============================================
+   TOPROC DRESS - Animations
+   ============================================= */
+
+/* --- Loading Glitch Effect --- */
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 var(--color-accent), -2px 0 cyan;
+    transform: translate(0);
+  }
+  20% {
+    text-shadow: -2px 0 var(--color-accent), 2px 0 cyan;
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    text-shadow: 2px 0 var(--color-accent), -2px 0 cyan;
+    transform: translate(2px, -1px);
+  }
+  60% {
+    text-shadow: -1px 0 var(--color-accent), 1px 0 cyan;
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    text-shadow: 1px 0 var(--color-accent), -1px 0 cyan;
+    transform: translate(1px, -2px);
+  }
+  100% {
+    text-shadow: 0 0 var(--color-accent), 0 0 cyan;
+    transform: translate(0);
+  }
+}
+
+.loading-logo {
+  animation: glitch 1.5s ease-in-out infinite alternate;
+}
+
+.loading-screen.hidden .loading-logo {
+  animation: none;
+}
+
+/* --- Hero Gradient Animation --- */
+@keyframes heroGradient {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(5%, -3%) rotate(1deg);
+  }
+  50% {
+    transform: translate(-3%, 5%) rotate(-1deg);
+  }
+  75% {
+    transform: translate(-5%, -2%) rotate(0.5deg);
+  }
+}
+
+/* --- Scroll Bounce --- */
+@keyframes scrollBounce {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(0.5);
+    transform-origin: top;
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* --- Hero Title Glitch on Hover --- */
+.hero-title:hover {
+  animation: glitchHover 0.3s ease-in-out;
+}
+
+@keyframes glitchHover {
+  0% { transform: translate(0); }
+  10% { transform: translate(-3px, 2px); }
+  20% { transform: translate(3px, -2px); }
+  30% { transform: translate(-2px, -1px); }
+  40% { transform: translate(2px, 1px); }
+  50% { transform: translate(-1px, 2px); }
+  60% { transform: translate(1px, -1px); }
+  70% { transform: translate(-3px, 1px); }
+  80% { transform: translate(3px, 0px); }
+  90% { transform: translate(-1px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* --- Glitch text effect --- */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text:hover::before {
+  animation: glitchLayer1 0.4s ease-in-out;
+  color: var(--color-accent);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.glitch-text:hover::after {
+  animation: glitchLayer2 0.4s ease-in-out;
+  color: cyan;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+@keyframes glitchLayer1 {
+  0% { transform: translate(0); }
+  25% { transform: translate(-3px, 2px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, 3px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitchLayer2 {
+  0% { transform: translate(0); }
+  25% { transform: translate(3px, -2px); }
+  50% { transform: translate(-2px, 1px); }
+  75% { transform: translate(1px, -3px); }
+  100% { transform: translate(0); }
+}
+
+/* --- Pulse for accent elements --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* --- Fade in stagger for grid items --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Marquee for brand statement --- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-border);
+  padding: 0 48px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.marquee-item .dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  margin: 0 24px;
+  vertical-align: middle;
+}
+
+/* --- Button ripple --- */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: width 0.5s ease, height 0.5s ease, top 0.5s ease, left 0.5s ease;
+}
+
+.btn:active::after {
+  width: 300px;
+  height: 300px;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+}
+
+/* --- Nav link underline animation --- */
+@keyframes navUnderline {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* --- Parallax helper --- */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  z-index: 0;
+  will-change: transform;
+}
+
+/* --- Noise overlay --- */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* --- Line decoration --- */
+.accent-line {
+  width: 48px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 24px 0;
+}
