@@ -210,12 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Swiper Carousel (Feature section) ---
   if (typeof Swiper !== 'undefined' && document.querySelector('.feature-swiper')) {
     new Swiper('.feature-swiper', {
-      slidesPerView: 1.2,
-      spaceBetween: 8,
+      slidesPerView: 1.3,
+      spaceBetween: 16,
       breakpoints: {
-        750: { slidesPerView: 2.5, spaceBetween: 8 },
-        1024: { slidesPerView: 3.5, spaceBetween: 8 },
-        1281: { slidesPerView: 4.5, spaceBetween: 8 },
+        750: { slidesPerView: 2.3, spaceBetween: 16 },
+        1024: { slidesPerView: 3.3, spaceBetween: 20 },
+        1281: { slidesPerView: 3.5, spaceBetween: 24 },
       }
     });
   }

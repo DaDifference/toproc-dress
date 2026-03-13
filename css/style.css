@@ -287,6 +287,10 @@ input, textarea {
   gap: 16px;
 }
 
+.home .nav-dropdown:hover .nav-dropdown-menu {
+  display: none;
+}
+
 .nav-dropdown-menu a {
   font-family: var(--font-display);
   font-size: 1.4rem;
@@ -701,24 +705,24 @@ input, textarea {
 .feature-section-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .feature-view-all {
   font-family: var(--font-display);
   font-size: 1.3rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+  color: var(--color-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 2px;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  transition: opacity var(--transition-fast);
+}
+
+.feature-view-all::after {
+  content: ' \2192';
 }
 
 .feature-view-all:hover {
-  color: var(--color-text);
-  border-color: var(--color-text);
+  opacity: 0.6;
 }
 
 .feature-swiper {
@@ -739,8 +743,9 @@ input, textarea {
 .feature-slide-image {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 450 / 600;
+  aspect-ratio: 3 / 4;
   background: var(--color-bg-elevated);
+  border-radius: 8px;
 }
 
 .feature-slide-image img {
@@ -762,16 +767,14 @@ input, textarea {
   font-size: 1.1rem;
   color: var(--color-text-muted);
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   margin-bottom: 4px;
 }
 
 .feature-slide-title {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* --- Brand Statement --- */
