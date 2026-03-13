@@ -10,7 +10,7 @@
   --color-text: #111111;
   --color-text-secondary: #666666;
   --color-text-muted: #999999;
-  --color-accent: #000000;
+  --color-accent: #6B3FA0;
   --color-border: #e5e5e5;
   --color-border-hover: #cccccc;
   --color-overlay: rgba(0, 0, 0, 0.6);
@@ -18,7 +18,7 @@
   --color-subfooter-bg: #111111;
   --color-subfooter-text: #ffffff;
 
-  --font-display: 'Oswald', sans-serif;
+  --font-display: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans JP', sans-serif;
   --font-body: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans JP', sans-serif;
 
   --header-height: 110px;
