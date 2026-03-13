@@ -3,132 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dealers - TOPROC DRESS</title>
-  <meta name="description" content="TOPROC DRESS 取扱店舗一覧。福岡、熊本、沖縄、京都、大分。">
-  <meta property="og:title" content="Dealers - TOPROC DRESS">
-  <meta property="og:type" content="website">
+  <title>Dealers — TOPROC DRESS</title>
+  <meta name="description" content="TOPROC DRESS 取扱店舗一覧。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="page-transition">
 
-  <div class="noise-overlay" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-
-  <header class="site-header">
+  <!-- Header -->
+  <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">TOPROC <span>DRESS</span></a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="dealers.html">Dealers</a></li>
+          <li><a href="products.html">Items</a></li>
+          <li><a href="about.html">Visual</a></li>
+          <li><a href="dealers.html" class="active">Dealers</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-right">
+        <a href="http://toprocdress.shop-pro.jp/" target="_blank" rel="noopener" class="header-icon">Cart</a>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <nav class="mobile-nav" aria-label="Mobile navigation">
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About</a>
+    <a href="products.html">Items</a>
+    <a href="about.html">Visual</a>
     <a href="dealers.html">Dealers</a>
     <a href="contact.html">Contact</a>
   </nav>
 
+  <!-- Main -->
   <main>
     <div class="container">
       <div class="page-header">
-        <p class="section-label reveal">Stockists</p>
-        <h1 class="section-title reveal">Dealers</h1>
-        <p class="section-desc reveal">TOPROC DRESS の取扱店舗一覧</p>
+        <p class="section-label">Stockists</p>
+        <h1 class="section-title">Dealers</h1>
       </div>
 
-      <div class="dealers-grid">
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">JUICE</div>
-          <div class="dealer-card-address">
-            〒810-0021<br>
-            福岡市中央区今泉2-5-25 KGビル1F
+      <div class="dealers-list">
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">JUICE</div>
+            <div class="dealer-address">福岡市中央区今泉2-5-25 KGビル1F</div>
           </div>
-          <div class="dealer-card-tel">TEL: <a href="tel:092-724-5754">092-724-5754</a></div>
+          <div class="dealer-tel"><a href="tel:092-724-5754">092-724-5754</a></div>
         </div>
-
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">&amp;Chill</div>
-          <div class="dealer-card-address">
-            〒860-0845<br>
-            熊本市中央区上通町10-5
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">&amp;Chill</div>
+            <div class="dealer-address">熊本市中央区上通町10-5</div>
           </div>
-          <div class="dealer-card-tel">TEL: <a href="tel:096-295-7053">096-295-7053</a></div>
+          <div class="dealer-tel"><a href="tel:096-295-7053">096-295-7053</a></div>
         </div>
-
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">belyni</div>
-          <div class="dealer-card-address">
-            〒900-0014<br>
-            沖縄県那覇市松尾2-4-9
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">belyni</div>
+            <div class="dealer-address">沖縄県那覇市松尾2-4-9</div>
           </div>
-          <div class="dealer-card-tel">TEL: <a href="tel:098-988-3320">098-988-3320</a></div>
+          <div class="dealer-tel"><a href="tel:098-988-3320">098-988-3320</a></div>
         </div>
-
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">Proof</div>
-          <div class="dealer-card-address">
-            〒604-8042<br>
-            京都市中京区新京極通三条下ル桜之町407-1<br>
-            歌之庄司ビル2F
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">Proof</div>
+            <div class="dealer-address">京都市中京区新京極通三条下ル桜之町407-1 歌之庄司ビル2F</div>
           </div>
-          <div class="dealer-card-tel">TEL: <a href="tel:075-255-0007">075-255-0007</a></div>
+          <div class="dealer-tel"><a href="tel:075-255-0007">075-255-0007</a></div>
         </div>
-
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">Playful Store</div>
-          <div class="dealer-card-address">
-            〒870-0021<br>
-            大分市府内町2-5-10 1F-A
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">Playful Store</div>
+            <div class="dealer-address">大分市府内町2-5-10 1F-A</div>
           </div>
-          <div class="dealer-card-tel">TEL: <a href="tel:097-607-0721">097-607-0721</a></div>
+          <div class="dealer-tel"><a href="tel:097-607-0721">097-607-0721</a></div>
         </div>
-      </div>
-
-      <!-- Future Map Placeholder -->
-      <div class="mt-lg reveal" style="text-align: center; padding: 60px 24px; border: 1px dashed var(--color-border); border-radius: var(--radius-md);">
-        <p class="text-muted" style="font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">Map — Coming Soon</p>
       </div>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="site-logo">TOPROC <span>DRESS</span></div>
-          <p>SUPPORT YOUR REBEL &mdash; Est. 2009</p>
+          <p>SUPPORT YOUR REBEL — Est. 2009</p>
         </div>
         <div class="footer-nav">
           <h4>Navigate</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="dealers.html">Dealers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+          <a href="index.html">Home</a>
+          <a href="products.html">Items</a>
+          <a href="about.html">Visual</a>
+          <a href="dealers.html">Dealers</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="footer-social">
           <h4>Follow</h4>
           <div class="footer-social-links">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="X (Twitter)">X</a>
+            <a href="https://www.instagram.com/toprocdress/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://twitter.com/TOPROCDRESS" target="_blank" rel="noopener">X</a>
           </div>
         </div>
         <div class="footer-newsletter">
@@ -139,9 +121,15 @@
           </form>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
-        <p class="footer-shipping">日本国内 ¥20,000以上で送料無料</p>
+    </div>
+    <div class="sub-footer">
+      <div class="container">
+        <div class="sub-footer-inner">
+          <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
+          <div class="sub-footer-links">
+            <span>日本国内 ¥20,000以上で送料無料</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>

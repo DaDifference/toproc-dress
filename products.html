@@ -3,45 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products - TOPROC DRESS</title>
+  <title>Items — TOPROC DRESS</title>
   <meta name="description" content="TOPROC DRESS の全商品一覧。Tee, Shirt, Pants, Headwear, Goods。">
-  <meta property="og:title" content="Products - TOPROC DRESS">
-  <meta property="og:description" content="TOPROC DRESS の全商品一覧。">
+  <meta property="og:title" content="Items — TOPROC DRESS">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
-
-  <div class="noise-overlay" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
+<body class="page-transition">
 
   <!-- Header -->
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">TOPROC <span>DRESS</span></a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="products.html" class="active">Items</a></li>
+          <li><a href="about.html">Visual</a></li>
           <li><a href="dealers.html">Dealers</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-right">
+        <a href="http://toprocdress.shop-pro.jp/" target="_blank" rel="noopener" class="header-icon">Cart</a>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <nav class="mobile-nav" aria-label="Mobile navigation">
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About</a>
+    <a href="products.html">Items</a>
+    <a href="about.html">Visual</a>
     <a href="dealers.html">Dealers</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -51,7 +49,7 @@
     <div class="container">
       <div class="page-header">
         <p class="section-label">Collection</p>
-        <h1 class="section-title">All Products</h1>
+        <h1 class="section-title">All Items</h1>
       </div>
 
       <!-- Category Filter -->
@@ -74,7 +72,7 @@
       <div class="product-count"></div>
 
       <!-- Product Grid -->
-      <div id="product-grid" class="bento-grid"></div>
+      <div id="product-grid" class="product-grid"></div>
     </div>
   </main>
 
@@ -84,23 +82,21 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="site-logo">TOPROC <span>DRESS</span></div>
-          <p>SUPPORT YOUR REBEL &mdash; Est. 2009</p>
+          <p>SUPPORT YOUR REBEL — Est. 2009</p>
         </div>
         <div class="footer-nav">
           <h4>Navigate</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="dealers.html">Dealers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+          <a href="index.html">Home</a>
+          <a href="products.html">Items</a>
+          <a href="about.html">Visual</a>
+          <a href="dealers.html">Dealers</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="footer-social">
           <h4>Follow</h4>
           <div class="footer-social-links">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="X (Twitter)">X</a>
+            <a href="https://www.instagram.com/toprocdress/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://twitter.com/TOPROCDRESS" target="_blank" rel="noopener">X</a>
           </div>
         </div>
         <div class="footer-newsletter">
@@ -111,9 +107,15 @@
           </form>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
-        <p class="footer-shipping">日本国内 ¥20,000以上で送料無料</p>
+    </div>
+    <div class="sub-footer">
+      <div class="container">
+        <div class="sub-footer-inner">
+          <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
+          <div class="sub-footer-links">
+            <span>日本国内 ¥20,000以上で送料無料</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>

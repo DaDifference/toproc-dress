@@ -1,6 +1,6 @@
 /* =============================================
-   TOPROC DRESS - Products Module
-   カラーミーショップ「どこでもカラーミー」連携
+   TOPROC DRESS — Products Module
+   カラーミーショップ連携
    ============================================= */
 
 const COLORME_SHOP_DOMAIN = 'toprocdress.shop-pro.jp';
@@ -60,11 +60,9 @@ const ProductManager = {
       : '';
 
     const priceClass = product.price === null ? 'product-card-price no-price' : 'product-card-price';
-
     const productUrl = this.getProductUrl(product);
     const cartUrl = this.getCartUrl(product);
 
-    // Buy button: disabled for sold out or no-price items
     let buyButton = '';
     if (product.soldout) {
       buyButton = '<button class="btn-cart btn-cart-disabled" disabled>SOLD OUT</button>';
@@ -74,7 +72,6 @@ const ProductManager = {
       buyButton = `<a href="${cartUrl}" class="btn-cart" target="_blank" rel="noopener">ADD TO CART</a>`;
     }
 
-    // Detail link: wraps image area
     const imageLink = productUrl
       ? `<a href="${productUrl}" target="_blank" rel="noopener" class="product-card-image-link">`
       : '<div class="product-card-image-link">';
@@ -82,10 +79,8 @@ const ProductManager = {
 
     card.innerHTML = `
       ${imageLink}
-        <div class="product-card-image">
-          <img src="${product.image}" alt="${product.name}${product.color ? ' - ' + product.color : ''}" loading="lazy">
-          ${soldoutOverlay}
-        </div>
+        <img src="${product.image}" alt="${product.name}${product.color ? ' - ' + product.color : ''}" loading="lazy">
+        ${soldoutOverlay}
       ${imageLinkClose}
       <div class="product-card-info">
         <div class="product-card-name">${product.name}</div>
@@ -114,7 +109,6 @@ const ProductManager = {
       container.appendChild(this.createCard(product));
     });
 
-    // Trigger reveal animation
     requestAnimationFrame(() => {
       const cards = container.querySelectorAll('.product-card.reveal');
       const observer = new IntersectionObserver((entries) => {
@@ -130,7 +124,6 @@ const ProductManager = {
   },
 
   renderFeatured(container, maxItems = 6) {
-    // Show newest non-soldout first, then fill with soldout
     const available = this.products.filter(p => !p.soldout);
     const soldout = this.products.filter(p => p.soldout);
     const featured = [...available, ...soldout].slice(0, maxItems);
@@ -158,19 +151,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   await ProductManager.init();
 
-  // Featured grid (index page)
   if (featuredGrid) {
     ProductManager.renderFeatured(featuredGrid, 6);
   }
 
-  // Full product grid (products page)
   if (productGrid) {
     const filtered = ProductManager.getFiltered();
     ProductManager.renderGrid(productGrid, filtered);
     if (productCount) ProductManager.updateCount(productCount);
   }
 
-  // Category filter
   if (filterBar) {
     filterBar.addEventListener('click', (e) => {
       const btn = e.target.closest('.filter-btn');
@@ -186,7 +176,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Availability filter
   if (availabilityFilter) {
     availabilityFilter.addEventListener('click', (e) => {
       const btn = e.target.closest('.availability-btn');

@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TOPROC DRESS - SUPPORT YOUR REBEL</title>
-  <meta name="description" content="TOPROC DRESS - ストリートアパレルブランド。SUPPORT YOUR REBEL。個々のライフスタイル・価値観を大切にするパイオニアのためのアパレルライン。">
+  <title>TOPROC DRESS — SUPPORT YOUR REBEL</title>
+  <meta name="description" content="TOPROC DRESS - ストリートアパレルブランド。SUPPORT YOUR REBEL。Est. 2009">
 
   <!-- OGP -->
-  <meta property="og:title" content="TOPROC DRESS - SUPPORT YOUR REBEL">
-  <meta property="og:description" content="ストリートカルチャーを背景に持つアパレルブランド。Sharing the same vision as pioneers in the field of originality.">
+  <meta property="og:title" content="TOPROC DRESS — SUPPORT YOUR REBEL">
+  <meta property="og:description" content="Sharing the same vision as pioneers in the field of originality.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toprocdress.com">
+  <meta property="og:url" content="https://dadifference.github.io/toproc-dress/">
   <meta property="og:image" content="images/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Oswald:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -25,77 +28,68 @@
 </head>
 <body>
 
-  <!-- Noise Overlay -->
-  <div class="noise-overlay" aria-hidden="true"></div>
-
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" aria-hidden="true"></div>
-
-  <!-- Loading Screen -->
-  <div class="loading-screen" aria-hidden="true">
-    <div class="loading-logo" data-text="TOPROC DRESS">TOPROC DRESS</div>
+  <!-- Intro Overlay -->
+  <div class="intro-overlay" id="intro-overlay">
+    <div class="intro-logo-text">TOPROC DRESS</div>
   </div>
 
   <!-- Header -->
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">TOPROC <span>DRESS</span></a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Items</a></li>
+          <li><a href="about.html">Visual</a></li>
           <li><a href="dealers.html">Dealers</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-right">
+        <a href="http://toprocdress.shop-pro.jp/" target="_blank" rel="noopener" class="header-icon">Cart</a>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Mobile Nav -->
-  <nav class="mobile-nav" aria-label="Mobile navigation">
-    <a href="index.html" class="active">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About</a>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="products.html">Items</a>
+    <a href="about.html">Visual</a>
     <a href="dealers.html">Dealers</a>
     <a href="contact.html">Contact</a>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="hero-bg">
+      <img src="images/placeholder.svg" alt="TOPROC DRESS" data-parallax="0.3">
+    </div>
     <div class="hero-content">
-      <p class="hero-tagline reveal">Est. 2009 &mdash; Street Apparel</p>
-      <h1 class="hero-title glitch-text" data-text="SUPPORT YOUR REBEL">
-        SUPPORT<br>YOUR <span class="accent">REBEL</span>
-      </h1>
-      <p class="hero-subtitle reveal">
-        個々のライフスタイル・価値観を大切にするパイオニアのためのアパレルライン
-      </p>
-      <div class="hero-cta reveal">
+      <p class="hero-tagline">Est. 2009 — Street Apparel</p>
+      <h1 class="hero-title">SUPPORT<br>YOUR REBEL</h1>
+      <p class="hero-subtitle">個々のライフスタイル・価値観を大切にするパイオニアのためのアパレルライン</p>
+      <div class="hero-cta">
         <a href="products.html" class="btn btn-primary">Shop Now</a>
         <a href="about.html" class="btn btn-outline">Our Story</a>
       </div>
     </div>
-    <div class="scroll-indicator" aria-hidden="true">
-      <span>Scroll</span>
-    </div>
   </section>
 
-  <!-- New Arrivals / Featured -->
+  <!-- Items Section -->
   <section class="section">
     <div class="container">
       <p class="section-label reveal">New Arrivals</p>
-      <h2 class="section-title reveal">Featured Items</h2>
-      <div class="accent-line reveal"></div>
-      <div id="featured-grid" class="bento-grid"></div>
-      <div class="mt-lg" style="text-align: center;">
-        <a href="products.html" class="btn btn-outline reveal">View All Products</a>
+      <h2 class="section-title reveal">Items</h2>
+      <div class="section-line reveal"></div>
+      <div id="featured-grid" class="product-grid"></div>
+      <div class="mt-lg text-center">
+        <a href="products.html" class="btn btn-outline reveal">View All Items</a>
       </div>
     </div>
   </section>
@@ -103,68 +97,59 @@
   <!-- Brand Statement -->
   <section class="brand-statement">
     <div class="container">
-      <div class="brand-statement-text reveal" aria-label="Brand statement">
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">"Sharing</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">the</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">same</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">vision</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">as</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px"><em>pioneers</em></span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">in</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">the</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">field</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px">of</span>
-        <span style="opacity:0;transform:translateY(20px);transition:all 0.5s ease;display:inline-block;margin-right:8px"><em>originality.</em>"</span>
+      <div class="brand-statement-text" id="brand-statement">
+        "Sharing the same vision as <em>pioneers</em> in the field of <em>originality.</em>"
       </div>
+      <p class="brand-statement-sub reveal">
+        「右向け右」の大衆文化に背を向けて、個々のライフスタイル・価値観を大切にするパイオニア同士との意見の共有、<br>
+        またリンクアップによるシーンの底上げを目的にアパレルラインを展開。
+      </p>
     </div>
   </section>
 
-  <!-- Marquee -->
-  <div class="section" style="padding: 0; overflow: hidden;" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item">TOPROC DRESS <span class="dot"></span></span>
-      <span class="marquee-item">SUPPORT YOUR REBEL <span class="dot"></span></span>
-      <span class="marquee-item">EST. 2009 <span class="dot"></span></span>
-      <span class="marquee-item">TOPROC DRESS <span class="dot"></span></span>
-      <span class="marquee-item">SUPPORT YOUR REBEL <span class="dot"></span></span>
-      <span class="marquee-item">EST. 2009 <span class="dot"></span></span>
-    </div>
-  </div>
-
-  <!-- NOMAD PROJECT -->
-  <section class="section">
+  <!-- Feature Section (NOMAD PROJECT) -->
+  <section class="feature-section">
     <div class="container">
       <p class="section-label reveal">Culture</p>
-      <h2 class="section-title reveal">NOMAD PROJECT</h2>
-      <p class="section-desc reveal">
-        ストリートカルチャーの最前線で活躍するアーティスト・ダンサーたちのインタビューシリーズ。
-      </p>
-      <div class="nomad-grid">
-        <div class="nomad-card reveal">
-          <div class="nomad-card-image">
-            <span>Coming Soon</span>
+      <h2 class="section-title reveal">Feature</h2>
+      <div class="section-line reveal"></div>
+    </div>
+    <div class="swiper feature-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide feature-slide">
+          <div class="feature-slide-image">
+            <img src="images/placeholder.svg" alt="NOMAD PROJECT">
           </div>
-          <div class="nomad-card-body">
-            <h3 class="nomad-card-title">Interview Series</h3>
-            <p class="nomad-card-desc">カルチャーシーンのパイオニアたちとの対話を通じて、オリジナリティの本質に迫る。</p>
-          </div>
-        </div>
-        <div class="nomad-card reveal">
-          <div class="nomad-card-image">
-            <span>Coming Soon</span>
-          </div>
-          <div class="nomad-card-body">
-            <h3 class="nomad-card-title">Event Coverage</h3>
-            <p class="nomad-card-desc">B-BOYシーンを中心としたイベントのドキュメント。</p>
+          <div class="feature-slide-info">
+            <p class="feature-slide-label">Interview</p>
+            <h3 class="feature-slide-title">NOMAD PROJECT</h3>
           </div>
         </div>
-        <div class="nomad-card reveal">
-          <div class="nomad-card-image">
-            <span>Coming Soon</span>
+        <div class="swiper-slide feature-slide">
+          <div class="feature-slide-image">
+            <img src="images/placeholder.svg" alt="Event Coverage">
           </div>
-          <div class="nomad-card-body">
-            <h3 class="nomad-card-title">Collaborations</h3>
-            <p class="nomad-card-desc">リンクアップによるシーンの底上げを目指すコラボレーション。</p>
+          <div class="feature-slide-info">
+            <p class="feature-slide-label">Event</p>
+            <h3 class="feature-slide-title">Event Coverage</h3>
+          </div>
+        </div>
+        <div class="swiper-slide feature-slide">
+          <div class="feature-slide-image">
+            <img src="images/placeholder.svg" alt="Collaborations">
+          </div>
+          <div class="feature-slide-info">
+            <p class="feature-slide-label">Collab</p>
+            <h3 class="feature-slide-title">Collaborations</h3>
+          </div>
+        </div>
+        <div class="swiper-slide feature-slide">
+          <div class="feature-slide-image">
+            <img src="images/placeholder.svg" alt="Coming Soon">
+          </div>
+          <div class="feature-slide-info">
+            <p class="feature-slide-label">Coming Soon</p>
+            <h3 class="feature-slide-title">More Stories</h3>
           </div>
         </div>
       </div>
@@ -176,35 +161,31 @@
     <div class="container">
       <p class="section-label reveal">Stockists</p>
       <h2 class="section-title reveal">Dealers</h2>
-      <div class="accent-line reveal"></div>
-      <div class="dealers-grid">
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">JUICE</div>
-          <div class="dealer-card-address">福岡市中央区今泉2-5-25 KGビル1F</div>
-          <div class="dealer-card-tel"><a href="tel:092-724-5754">092-724-5754</a></div>
+      <div class="section-line reveal"></div>
+      <div class="dealers-list">
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">JUICE</div>
+            <div class="dealer-address">福岡市中央区今泉2-5-25 KGビル1F</div>
+          </div>
+          <div class="dealer-tel"><a href="tel:092-724-5754">092-724-5754</a></div>
         </div>
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">&Chill</div>
-          <div class="dealer-card-address">熊本市中央区上通町10-5</div>
-          <div class="dealer-card-tel"><a href="tel:096-295-7053">096-295-7053</a></div>
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">&amp;Chill</div>
+            <div class="dealer-address">熊本市中央区上通町10-5</div>
+          </div>
+          <div class="dealer-tel"><a href="tel:096-295-7053">096-295-7053</a></div>
         </div>
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">belyni</div>
-          <div class="dealer-card-address">沖縄県那覇市松尾2-4-9</div>
-          <div class="dealer-card-tel"><a href="tel:098-988-3320">098-988-3320</a></div>
-        </div>
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">Proof</div>
-          <div class="dealer-card-address">京都市中京区新京極通三条下ル桜之町407-1 歌之庄司ビル2F</div>
-          <div class="dealer-card-tel"><a href="tel:075-255-0007">075-255-0007</a></div>
-        </div>
-        <div class="dealer-card reveal">
-          <div class="dealer-card-name">Playful Store</div>
-          <div class="dealer-card-address">大分市府内町2-5-10 1F-A</div>
-          <div class="dealer-card-tel"><a href="tel:097-607-0721">097-607-0721</a></div>
+        <div class="dealer-item reveal">
+          <div class="dealer-info">
+            <div class="dealer-name">belyni</div>
+            <div class="dealer-address">沖縄県那覇市松尾2-4-9</div>
+          </div>
+          <div class="dealer-tel"><a href="tel:098-988-3320">098-988-3320</a></div>
         </div>
       </div>
-      <div class="mt-lg" style="text-align: center;">
+      <div class="mt-lg text-center">
         <a href="dealers.html" class="btn btn-outline reveal">View All Dealers</a>
       </div>
     </div>
@@ -216,23 +197,21 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="site-logo">TOPROC <span>DRESS</span></div>
-          <p>SUPPORT YOUR REBEL &mdash; ストリートカルチャーを背景に持つアパレルブランド。Est. 2009</p>
+          <p>SUPPORT YOUR REBEL — ストリートカルチャーを背景に持つアパレルブランド。Est. 2009</p>
         </div>
         <div class="footer-nav">
           <h4>Navigate</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="dealers.html">Dealers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+          <a href="index.html">Home</a>
+          <a href="products.html">Items</a>
+          <a href="about.html">Visual</a>
+          <a href="dealers.html">Dealers</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="footer-social">
           <h4>Follow</h4>
           <div class="footer-social-links">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="X (Twitter)">X</a>
+            <a href="https://www.instagram.com/toprocdress/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://twitter.com/TOPROCDRESS" target="_blank" rel="noopener">X</a>
           </div>
         </div>
         <div class="footer-newsletter">
@@ -243,14 +222,21 @@
           </form>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
-        <p class="footer-shipping">日本国内 ¥20,000以上で送料無料</p>
+    </div>
+    <div class="sub-footer">
+      <div class="container">
+        <div class="sub-footer-inner">
+          <p>&copy; 2009&ndash;2026 TOPROC DRESS. All rights reserved.</p>
+          <div class="sub-footer-links">
+            <span>日本国内 ¥20,000以上で送料無料</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/products.js"></script>
 </body>
