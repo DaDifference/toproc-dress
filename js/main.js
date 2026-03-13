@@ -125,6 +125,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // --- Visual Film-strip Scroll (WTAPS-style) ---
+  const visualScrollArea = document.getElementById('visual-scroll-area');
+  if (visualScrollArea) {
+    const visualBg = document.getElementById('visual-bg');
+    const stripLeft = document.getElementById('visual-strip-left');
+    const stripCenter = document.getElementById('visual-strip-center');
+    const stripRight = document.getElementById('visual-strip-right');
+    const darkOverlay = document.getElementById('visual-dark-overlay');
+
+    if (visualBg && stripLeft && stripCenter && stripRight) {
+      let visualTicking = false;
+
+      // Calculate the base Y offset to vertically center each strip
+      function getBaseY(strip) {
+        const stripH = strip.scrollHeight;
+        const parentH = visualBg.offsetHeight;
+        return (parentH - stripH) / 2;
+      }
+
+      function updateVisualFilmstrip() {
+        visualTicking = false;
+        const scrollY = window.scrollY;
+        const rect = visualScrollArea.getBoundingClientRect();
+        const sectionTop = scrollY + rect.top;
+        const viewH = window.innerHeight;
+        // Total scrollable distance within the scroll area (scroll-area height minus one viewport)
+        const scrollRange = visualScrollArea.offsetHeight - viewH;
+
+        // progress: 0 when sticky starts (top of section at top of viewport)
+        //           1 when sticky ends (scrolled through entire scroll area)
+        const raw = (scrollY - sectionTop) / scrollRange;
+        const progress = Math.max(0, Math.min(1, raw));
+
+        // Photos: scale from 1.8 → 1.0 (zoomed in at start, fits viewport at end)
+        // At 1.8x the center column fills the screen, sides overflow
+        // At 1.0x everything fits within the viewport as a 3-column grid
+        const scale = 1.8 - 0.8 * progress;
+        visualBg.style.transform = 'scale(' + scale + ')';
+
+        // Photos fade in gradually
+        const photoProgress = Math.max(0, (progress - 0.08) / 0.92);
+        visualBg.style.opacity = Math.min(1, photoProgress * 1.4);
+
+        // Dark overlay: starts fully opaque, gradually reveals photos with dark filter
+        // progress 0-0.12: fully black
+        // progress 0.12-0.55: fade from black to dark filter
+        // progress 0.55+: dark filter (opacity ~0.35)
+        if (darkOverlay) {
+          let overlayOpacity;
+          if (progress < 0.12) {
+            overlayOpacity = 1;
+          } else {
+            const fadeProgress = Math.min(1, (progress - 0.12) / 0.43);
+            overlayOpacity = Math.max(0.35, 1 - fadeProgress * 0.65);
+          }
+          darkOverlay.style.opacity = overlayOpacity;
+        }
+
+        // Parallax: differential vertical offset for film-strip movement
+        const maxShift = viewH * 0.18;
+        const shift = progress * maxShift;
+        const baseLeft = getBaseY(stripLeft);
+        const baseCenter = getBaseY(stripCenter);
+        const baseRight = getBaseY(stripRight);
+
+        stripCenter.style.transform = 'translateY(' + (baseCenter + shift) + 'px)';
+        stripLeft.style.transform = 'translateY(' + (baseLeft - shift) + 'px)';
+        stripRight.style.transform = 'translateY(' + (baseRight - shift) + 'px)';
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!visualTicking) {
+          requestAnimationFrame(updateVisualFilmstrip);
+          visualTicking = true;
+        }
+      }, { passive: true });
+
+      // Initial call
+      updateVisualFilmstrip();
+    }
+  }
+
   // --- Swiper Carousel (Feature section) ---
   if (typeof Swiper !== 'undefined' && document.querySelector('.feature-swiper')) {
     new Swiper('.feature-swiper', {

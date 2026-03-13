@@ -8,8 +8,11 @@ const COLORME_SHOP_ID = 'PA01264773';
 
 const ProductManager = {
   products: [],
+  showInStockOnly: false,
+  showColorVariations: false,
   currentCategory: 'ALL',
-  currentAvailability: 'ALL',
+  currentView: 'item',
+  currentCols: 3,
 
   async init() {
     try {
@@ -27,10 +30,17 @@ const ProductManager = {
       filtered = filtered.filter(p => p.category === this.currentCategory);
     }
 
-    if (this.currentAvailability === 'AVAILABLE') {
-      filtered = filtered.filter(p => !p.soldout);
-    } else if (this.currentAvailability === 'SOLDOUT') {
-      filtered = filtered.filter(p => p.soldout);
+    if (this.showInStockOnly) {
+      filtered = filtered.filter(p => !p.soldout && p.price !== null);
+    }
+
+    if (!this.showColorVariations) {
+      const seen = new Set();
+      filtered = filtered.filter(p => {
+        if (seen.has(p.name)) return false;
+        seen.add(p.name);
+        return true;
+      });
     }
 
     return filtered;
@@ -55,39 +65,25 @@ const ProductManager = {
     const card = document.createElement('div');
     card.className = 'product-card reveal';
 
-    const soldoutOverlay = product.soldout
-      ? '<div class="product-card-soldout"><span>SOLD OUT</span></div>'
-      : '';
-
-    const priceClass = product.price === null ? 'product-card-price no-price' : 'product-card-price';
     const productUrl = this.getProductUrl(product);
-    const cartUrl = this.getCartUrl(product);
-
-    let buyButton = '';
-    if (product.soldout) {
-      buyButton = '<button class="btn-cart btn-cart-disabled" disabled>SOLD OUT</button>';
-    } else if (product.price === null) {
-      buyButton = '<button class="btn-cart btn-cart-disabled" disabled>COMING SOON</button>';
-    } else if (cartUrl) {
-      buyButton = `<a href="${cartUrl}" class="btn-cart" target="_blank" rel="noopener">ADD TO CART</a>`;
-    }
-
     const imageLink = productUrl
       ? `<a href="${productUrl}" target="_blank" rel="noopener" class="product-card-image-link">`
       : '<div class="product-card-image-link">';
     const imageLinkClose = productUrl ? '</a>' : '</div>';
 
+    let statusLabel = '';
+    if (product.soldout) {
+      statusLabel = '<span class="product-card-status">SOLD OUT</span>';
+    } else if (product.price === null) {
+      statusLabel = '<span class="product-card-status">Coming soon</span>';
+    }
+
     card.innerHTML = `
       ${imageLink}
-        <img src="${product.image}" alt="${product.name}${product.color ? ' - ' + product.color : ''}" loading="lazy">
-        ${soldoutOverlay}
+        ${statusLabel}
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
       ${imageLinkClose}
-      <div class="product-card-info">
-        <div class="product-card-name">${product.name}</div>
-        ${product.color ? `<div class="product-card-color">${product.color}</div>` : ''}
-        <div class="${priceClass}">${this.formatPrice(product.price)}</div>
-        ${buyButton}
-      </div>
+      <div class="product-card-name">${product.name}</div>
     `;
 
     return card;
@@ -133,11 +129,7 @@ const ProductManager = {
   updateCount(countEl) {
     const filtered = this.getFiltered();
     const total = this.products.length;
-    if (this.currentCategory === 'ALL' && this.currentAvailability === 'ALL') {
-      countEl.textContent = `${total} items`;
-    } else {
-      countEl.textContent = `${filtered.length} / ${total} items`;
-    }
+    countEl.textContent = `${filtered.length} items`;
   }
 };
 
@@ -145,49 +137,77 @@ const ProductManager = {
 document.addEventListener('DOMContentLoaded', async () => {
   const productGrid = document.getElementById('product-grid');
   const featuredGrid = document.getElementById('featured-grid');
-  const filterBar = document.querySelector('.filter-bar');
-  const availabilityFilter = document.querySelector('.availability-filter');
   const productCount = document.querySelector('.product-count');
 
   await ProductManager.init();
+
+  // Read category from URL params
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
+  if (categoryParam) {
+    ProductManager.currentCategory = categoryParam;
+  }
 
   if (featuredGrid) {
     ProductManager.renderFeatured(featuredGrid, 6);
   }
 
-  if (productGrid) {
+  function refreshGrid() {
+    if (!productGrid) return;
     const filtered = ProductManager.getFiltered();
     ProductManager.renderGrid(productGrid, filtered);
     if (productCount) ProductManager.updateCount(productCount);
   }
 
-  if (filterBar) {
-    filterBar.addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
+  if (productGrid) {
+    refreshGrid();
+  }
 
-      filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      ProductManager.currentCategory = btn.dataset.category;
-      const filtered = ProductManager.getFiltered();
-      ProductManager.renderGrid(productGrid, filtered);
-      if (productCount) ProductManager.updateCount(productCount);
+  // --- In Stock filter ---
+  const instockCheckbox = document.getElementById('filter-instock');
+  if (instockCheckbox) {
+    instockCheckbox.addEventListener('change', () => {
+      ProductManager.showInStockOnly = instockCheckbox.checked;
+      refreshGrid();
     });
   }
 
-  if (availabilityFilter) {
-    availabilityFilter.addEventListener('click', (e) => {
-      const btn = e.target.closest('.availability-btn');
+  // --- Color Variations filter ---
+  const colorvarCheckbox = document.getElementById('filter-colorvar');
+  if (colorvarCheckbox) {
+    colorvarCheckbox.addEventListener('change', () => {
+      ProductManager.showColorVariations = colorvarCheckbox.checked;
+      refreshGrid();
+    });
+  }
+
+  // --- View toggle (Item / Image) ---
+  const viewToggle = document.querySelector('.view-toggle');
+  if (viewToggle) {
+    viewToggle.addEventListener('click', (e) => {
+      const btn = e.target.closest('.view-toggle-btn');
       if (!btn) return;
 
-      availabilityFilter.querySelectorAll('.availability-btn').forEach(b => b.classList.remove('active'));
+      viewToggle.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      ProductManager.currentView = btn.dataset.view;
+      refreshGrid();
+    });
+  }
+
+  // --- Grid columns toggle (3 / 4) ---
+  const gridToggle = document.querySelector('.grid-toggle');
+  if (gridToggle && productGrid) {
+    gridToggle.addEventListener('click', (e) => {
+      const btn = e.target.closest('.grid-toggle-btn');
+      if (!btn) return;
+
+      gridToggle.querySelectorAll('.grid-toggle-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      ProductManager.currentAvailability = btn.dataset.availability;
-      const filtered = ProductManager.getFiltered();
-      ProductManager.renderGrid(productGrid, filtered);
-      if (productCount) ProductManager.updateCount(productCount);
+      const cols = parseInt(btn.dataset.cols, 10);
+      ProductManager.currentCols = cols;
+      productGrid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     });
   }
 });
