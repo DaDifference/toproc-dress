@@ -221,7 +221,7 @@ input, textarea {
 
 .site-logo {
   font-family: var(--font-display);
-  font-size: 2.0rem;
+  font-size: 2.5rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -242,15 +242,14 @@ input, textarea {
 
 .desktop-nav ul {
   display: flex;
-  gap: 40px;
+  gap: 24px;
 }
 
 .desktop-nav a {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--color-text-secondary);
   transition: color var(--transition-fast);
 }
@@ -1259,7 +1258,7 @@ input, textarea {
 
 .page-title {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 4.5vw, 5rem);
+  font-size: clamp(1.6rem, 2.2vw, 2.5rem);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -1693,16 +1692,16 @@ input, textarea {
 
 /* --- Dark Bottom Bar --- */
 .products-bottom-bar-wrapper {
-  max-width: var(--container-max);
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 16px 10px;
+  padding: 0 10px 10px;
 }
 
 .products-bottom-bar {
   background: #1a1a1a;
   color: #fff;
-  padding: 60px 60px;
-  border-radius: 16px;
+  padding: 50px 60px;
+  border-radius: 18px;
   /* Morph animation: starts as pill, expands to full */
   transform-origin: center center;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1738,12 +1737,12 @@ input, textarea {
 .products-bottom-col {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .bottom-cat-link {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.7);
@@ -1784,7 +1783,7 @@ input, textarea {
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   padding: 8px 0;
   outline: none;
 }
@@ -1865,7 +1864,7 @@ input, textarea {
 }
 
 /* --- Responsive for products footer --- */
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   .products-footer-inner {
     grid-template-columns: 1fr;
     gap: 32px;
