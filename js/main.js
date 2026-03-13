@@ -44,6 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateHeader() {
     const currentScrollY = window.scrollY;
 
+    // Transparent → solid transition for home page
+    if (currentScrollY > 50) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+
     if (currentScrollY > 200) {
       if (currentScrollY > lastScrollY) {
         // Scrolling down

@@ -30,34 +30,22 @@
   }
 }
 
-.hero.animated .hero-tagline {
-  animation: heroRise 0.8s cubic-bezier(0.12, 0.9, 0.1, 1) 0.2s forwards;
+.hero.animated .hero-info {
+  animation: heroRise 0.8s cubic-bezier(0.12, 0.9, 0.1, 1) 0.5s forwards;
 }
 
-.hero.animated .hero-title {
-  animation: heroRise 1.0s cubic-bezier(0.12, 0.9, 0.1, 1) 0.4s forwards;
+/* --- Hero Image Fade-in --- */
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.hero.animated .hero-subtitle {
-  animation: heroRise 0.8s cubic-bezier(0.12, 0.9, 0.1, 1) 0.7s forwards;
-}
-
-.hero.animated .hero-cta {
-  animation: heroRise 0.8s cubic-bezier(0.12, 0.9, 0.1, 1) 0.9s forwards;
-}
-
-/* --- Clip-path Hero Reveal --- */
-@keyframes clipReveal {
-  from {
-    clip-path: circle(0% at 50% 50%);
-  }
-  to {
-    clip-path: circle(150% at 50% 50%);
-  }
+.hero-bg {
+  opacity: 0;
 }
 
 .hero-bg.clip-animate {
-  animation: clipReveal 1.5s cubic-bezier(0.12, 0.9, 0.1, 1) forwards;
+  animation: heroFadeIn 1.2s ease forwards;
 }
 
 /* --- Scroll Reveal Stagger --- */
