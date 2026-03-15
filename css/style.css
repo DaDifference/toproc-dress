@@ -1472,6 +1472,16 @@ input, textarea {
     display: none;
   }
 
+  .site-logo {
+    font-size: 1.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .header-inner {
+    padding: 0 16px;
+    justify-content: center;
+  }
+
   .site-header {
     height: var(--header-height-mobile);
   }
